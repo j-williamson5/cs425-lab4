@@ -119,23 +119,30 @@ public class Rates {
              * *** INSERT YOUR CODE HERE ***
              */
             
-            //Create Input Counter
+            //Row counter to skip first row
             int counter = 0;
             
             //Parse CSV Data
-            
             while(iterator.hasNext()){
-                counter += 1;
                 
-                if(counter > 1){
-                    
-                    //Get Row from CSV
-                    row = iterator.next();
+                //Skip the first row
+                    if(counter == 0){
+                        
+                        iterator.next();
+                        
+                        counter += 1;
+                    }
+                    else{
+                        //Isolate the current row
+                        row = iterator.next();
 
+                        //Skip the header row
+                        if(!"Code".equals(row[1])){
 
-                    rates.put(row[1], row[2]);
-                }
+                            rates.put(row[1], row[2]);
 
+                        }
+                    }
             }
             
             //Make Date

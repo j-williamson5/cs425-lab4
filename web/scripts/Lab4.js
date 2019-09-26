@@ -15,18 +15,30 @@ var Lab4 = ( function() {
              * currency codes, separated by colons and formatted to two decimal
              * places.  (See the screenshot given with this assignment.)
              */
-
-            var usdAmount = parseInt($("#input").value);
             
-            //Loop through rates
-            var rateObject = rates.get("rates");
-                        
-            for (var key in rateObject){
-                var base = key;
-                var rate = rateObject[key];
+            //Get USD Amount to convert
+            var usdAmount = parseInt($("#input").val());
+
+            //Check if a valid number was entered in the usdAmount box
+            if(!isNaN(usdAmount)){
                 
-                //APPEND TO OUTPUT WHEN YOU FIGURE IT OUT DO THE MATH ON THE RATE
-                var finalRate = rate * usdAmount;
+                //Remove existing text (jQuery Version, other conversions,etc.)
+                $("#output").empty();
+
+                //Get rates from input
+                var rateObject = rates["rates"];
+
+                //Loop through rates
+                for (var key in rateObject){
+                    var base = key;
+                    var rate = rateObject[key];
+
+                    //Get final exchange rate and round it
+                    var finalRate = (parseFloat(rate) * usdAmount).toFixed(2);
+                    //var roundedRate = finalRate.toFixed(2);
+
+                    $("#output").append(base + ": " + finalRate.toString() + "<br>");
+                }
             }
         },
         
