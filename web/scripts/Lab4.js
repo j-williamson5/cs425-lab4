@@ -16,8 +16,18 @@ var Lab4 = ( function() {
              * places.  (See the screenshot given with this assignment.)
              */
 
-            // INSERT YOUR CODE HERE
+            var usdAmount = parseInt($("#input").value);
             
+            //Loop through rates
+            var rateObject = rates.get("rates");
+                        
+            for (var key in rateObject){
+                var base = key;
+                var rate = rateObject[key];
+                
+                //APPEND TO OUTPUT WHEN YOU FIGURE IT OUT DO THE MATH ON THE RATE
+                var finalRate = rate * usdAmount;
+            }
         },
         
         getConversion: function() {

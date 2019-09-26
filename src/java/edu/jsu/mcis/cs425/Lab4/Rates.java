@@ -4,10 +4,12 @@ import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.StringReader;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import java.util.Date;
 
 public class Rates {
     
@@ -93,7 +95,7 @@ public class Rates {
     }
     
     public static String getRatesAsJson(List<String[]> csv) {
-        
+          
         String results = "";
         String[] row;
         
@@ -117,7 +119,34 @@ public class Rates {
              * *** INSERT YOUR CODE HERE ***
              */
             
+            //Create Input Counter
+            int counter = 0;
+            
+            //Parse CSV Data
+            
+            while(iterator.hasNext()){
+                counter += 1;
+                
+                if(counter > 1){
+                    
+                    //Get Row from CSV
+                    row = iterator.next();
+
+
+                    rates.put(row[1], row[2]);
+                }
+
+            }
+            
+            //Make Date
+            Date date = new Date();
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String cleanDate = formatter.format(date);
+            
+            //Put JSON info in
             json.put("rates", rates);
+            json.put("date",cleanDate);
             
             /* Parse top-level container to a JSON string */
             
