@@ -39,6 +39,8 @@ var Lab4 = ( function() {
 
                     $("#output").append(base + ": " + finalRate.toString() + "<br>");
                 }
+                
+                $("#output").append("<br> Based on " + rates["date"] + " Exchange Rates");
             }
         },
         
