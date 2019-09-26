@@ -17,7 +17,7 @@ var Lab4 = ( function() {
              */
 
             // INSERT YOUR CODE HERE
-
+            
         },
         
         getConversion: function() {
@@ -41,7 +41,7 @@ var Lab4 = ( function() {
                 method: 'GET',
                 dataType: 'json',
                 success: function(response) {
-                    that.convert(response);                    
+                    that.convert(response);             
                 }
             });
             
